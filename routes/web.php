@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\control_authors;
-use App\Http\Controllers\Control_Home;
+use App\Http\Controllers\control_home;
 use App\Http\Controllers\control_news;
 use Illuminate\Support\Facades\Route;
 
@@ -16,18 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//home
-Route::get('/todo', function () {
-    return view('todo-list');
-});
-Route::get('/home', [Control_Home::class, 'index']);
-
 //Author
-Route::get('/admin', [control_authors::class, 'index']);
+Route::get('/', [control_authors::class, 'index']);
 Route::resource('admin', control_authors::class);
 Route::get('/gambar/{image}', [control_authors::class, 'load_image']);
 Route::get('/hapus/{id}', [control_authors::class, 'destroy']);
